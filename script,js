@@ -1,0 +1,23 @@
+var url = window.location.href;
+
+if(url.includes('.php')){
+    var button = document.createElement("button");
+    button.id = "modi-remove-btn";
+    button.textContent = "Remove reCAPTCHA";
+    document.body.appendChild(button);
+
+    let captcha = document.querySelector('[id*="captcha"]');
+    let modiRemoveBtn = document.getElementById("modi-remove-btn");
+
+    if (captcha && modiRemoveBtn) {
+        captcha.parentNode.insertBefore(modiRemoveBtn, captcha.nextSibling);
+    }
+
+    document.getElementById("modi-remove-btn").addEventListener('click', function(e){
+        e.preventDefault();
+        var captcha = document.querySelector('[id*="captcha"]');
+        if (captcha) {
+            captcha.remove();
+        }
+    });
+}
